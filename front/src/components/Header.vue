@@ -1,6 +1,16 @@
 <template>
   <header class="main-header">
-    <h1>GIF SEARCH</h1>
+    <div class="logo">
+      <img src="@/assets/logo.png">
+      <h1>GIF SEARCH</h1>
+    </div>
+    <div class="search">
+      <input class="input" type="search" v-model="search" placeholder="検索"/>
+      <button class="button mdi mdi-image-search-outline"></button>
+    </div>
+    <div class="nav-info">
+      <a class="mdi mdi-help-circle-outline"></a>
+    </div>
   </header>
 </template>
 
@@ -9,9 +19,41 @@
   height: 64px;
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  h1 {
-    font-weight: 700;
+  .logo {
+    display: flex;
+    align-items: center;
+    h1 {
+      margin-left: 8px;
+      font-size: 30px;
+      font-weight: 700;
+      color: #375b98;
+    }
+    img {
+      height: 48px;
+      width: 48px;
+    }
+  }
+  .search {
+    display: flex;
+    input {
+      height: 40px;
+      width: 48vw;
+      min-width: 200px;
+      max-width: 600px;
+      border-radius: 0;
+    }
+    button {
+      border-radius: 0;
+    }
+  }
+  .nav-info {
+    a {
+      font-size: 32px;
+    }
   }
 }
 </style>
