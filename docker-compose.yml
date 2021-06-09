@@ -2,42 +2,6 @@ version: '3'
 
 services:
 
-  db:
-    build:
-      context: ./db
-      dockerfile: Dockerfile
-    ports:
-      - 3306:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_ROOT_HOST=%
-      - MYSQL_USER=test
-      - MYSQL_PASSWORD=test
-    volumes:
-      - ./db/db-datadir:/var/lib/mysql
-
-  back:
-    build:
-      context: ./back
-      dockerfile: Dockerfile
-    command: 'sh /server/start-back.sh'
-    ports:
-      - 8000:8000
-    volumes:
-      - ./back:/server/
-    depends_on:
-      - db
-
-  ai:
-    build:
-      context: ./ai
-      dockerfile: Dockerfile
-    command: 'sh /server/start-ai.sh'
-    ports:
-      - 9000:9000
-    volumes:
-      - ./ai:/server/
-
   front:
     build:
       context: ./front
