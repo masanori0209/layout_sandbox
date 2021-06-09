@@ -1,12 +1,12 @@
 <template>
-  <section class="hero is-primary">
-    <div class="hero-body">
-      <p class="title">
-        Image Classification
-      </p>
-      <p class="subtitle">
-        画像分類を行うAPIとDB保存がうまくいっているか見るためのUI
-      </p>
-    </div>
-  </section>
+  <div class="main-body">
+
+  </div>
 </template>
+
+<style style="scss" scoped>
+.main-body{
+  height: calc(100vh - 64px);
+  width: 100%;
+}
+</style>

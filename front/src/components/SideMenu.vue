@@ -9,6 +9,6 @@
 <style style="scss" scoped>
 .side-menu{
   height: 100%;
-  width: 100%;
+  width: 200px;
 }
 </style>
