@@ -1,12 +1,19 @@
 <template>
-  <div class="side-menu">
+  <div class="side-menu" :style="menuSize">
     <div class="menu-box">
-      <a class="menu-btn mdi mdi-menu"></a>
+      <a
+        class="menu-btn mdi mdi-menu"
+        @click="menuWindowChange()"
+      ></a>
     </div>
     <div class="navbar">
       <ul>
         <li v-for="(category, idx) in categories" :key="idx">
-          <router-link>{{category}}</router-link>
+          <router-link
+            :to="'?category=' + category.name">
+            <b-icon :class="{'icon': !isMinimum}" :icon="category.icon"></b-icon>
+            <span>{{isMinimum ? '' : category.name}}</span>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -16,21 +23,50 @@
 export default {
   data () {
     return {
+      isMinimum: false,
       categories: [
-        "Favorite",
-        "Sports",
-        "Game",
-        "News",
-        "Art",
+        {
+          name: "Favorite",
+          icon: "star-outline",
+        },
+        {
+          name: "Sports",
+          icon: "baseball",
+        },
+        {
+          name: "Game",
+          icon: "gamepad-variant-outline",
+        },
+        {
+          name: "News",
+          icon: "newspaper-variant-multiple-outline",
+        },
+        {
+          name: "Art",
+          icon: "book-multiple-outline",
+        },
       ]
     }
   },
+  computed: {
+    menuSize () {
+      return {
+        width: this.isMinimum ? '64px' : '200px'
+      }
+    }
+  },
+  methods: {
+    menuWindowChange () {
+      this.isMinimum = !this.isMinimum
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 .side-menu{
   height: calc(100vh - 64px);
   width: 200px;
+  transition: 0.5s;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   .menu-box {
     display: flex;
@@ -38,6 +74,29 @@ export default {
     padding: 0 12px;
     .menu-btn {
       font-size: 32px;
+    }
+  }
+  .navbar {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    ul {
+      width: 100%;
+      li {
+        font-size: 24px;
+        padding: 8px 12px;
+        transition: 0.5s;
+        a {
+          display: flex;
+          align-items: center;
+        }
+        .icon {
+          margin-right: 8px;
+        }
+      }
+      li:hover {
+        background: lightcoral;
+      }
     }
   }
 }
