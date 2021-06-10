@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <!-- ヘッダー部 -->
-    <Header @searchAPI="searchAPI"/>
+    <Header @searchAPI="searchAPI" @trendAPI="trendAPI"/>
     <!-- サイドメニュー部 -->
     <div class="main">
       <SideMenu/>
       <!-- ボディ部 -->
       <Body>
+        <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="false"></b-loading>
         <router-view :gifImageList="gifImageList"/>
       </Body>
     </div>
@@ -24,16 +25,50 @@ export default {
   },
   data () {
     return {
-      gifImageList: []
+      gifImageList: [],
+      isLoading: true
+    }
+  },
+  watch: {
+    $route () {
+      this.isLoading = true
+      this.$gf.search(
+        this.$route.query.category,
+        {
+          sort: 'relevant',
+          lang: 'es',
+          limit: 30,
+          type: 'stickers'
+        }).then((d) => {
+          this.gifImageList = d
+          this.isLoading = false
+        })
     }
   },
   methods: {
     searchAPI (text) {
-      this.$gf.search(text, { sort: 'relevant', lang: 'es', limit: 30, type: 'stickers' }).then((d) => {this.gifImageList = d})
+      this.isLoading = true
+      this.$gf.search(text,
+        {
+          sort: 'relevant',
+          lang: 'es',
+          limit: 30,
+          type: 'stickers'
+        }).then((d) => {
+          this.gifImageList = d
+          this.isLoading = false
+        })
+    },
+    trendAPI () {
+      this.isLoading = true
+      this.$gf.trending({ limit: 10 }).then((d) => {
+        this.gifImageList = d
+        this.isLoading = false
+      })
     }
   },
   mounted () {
-    this.$gf.trending({ limit: 10 }).then((d) => {this.gifImageList = d})
+    this.trendAPI()
   }
 }
 </script>
@@ -59,7 +94,7 @@ export default {
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #4099FF;
+$primary: #375b98;
 $primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
@@ -126,11 +161,6 @@ $colors: mergeColorMaps(
     ),
     $custom-colors
 );
-
-// Links
-$link: $primary;
-$link-invert: $primary-invert;
-$link-focus-border: $primary;
 
 // Import Bulma and Buefy styles
 @import "~bulma";

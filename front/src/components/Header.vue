@@ -2,18 +2,18 @@
   <header class="main-header">
     <div class="logo">
       <img src="@/assets/logo.png">
-      <h1>GIF SEARCH</h1>
+      <h1 v-if="!isMinimum">GIF SEARCH</h1>
     </div>
     <div class="search">
       <input class="input" type="search" v-model="search" placeholder="検索"/>
       <button
-        class="button mdi mdi-image-search-outline"
+        class="button mdi mdi-image-search-outline is-primary"
         @click="searchClick"
       >
       </button>
     </div>
-    <div class="nav-info">
-      <a class="mdi mdi-help-circle-outline"></a>
+    <div class="nav-info" v-if="!isMinimum">
+      <a @click="trendClick" class="mdi mdi-cloud-refresh"></a>
     </div>
   </header>
 </template>
@@ -21,12 +21,25 @@
 export default {
   data () {
     return {
-      search: ""
+      search: "",
+      isMinimum: window.innerWidth > 640 ? false : true
     }
+  },
+  created() {
+    window.addEventListener("resize", this.changeSize);
+} ,
+  destroyed() {
+    window.removeEventListener("resize", this.changeSize);
   },
   methods: {
     searchClick () {
       this.$emit("searchAPI", this.search)
+    },
+    changeSize () {
+      this.isMinimum = window.innerWidth > 720 ? false : true
+    },
+    trendClick () {
+      this.$emit("trendAPI")
     }
   }
 }

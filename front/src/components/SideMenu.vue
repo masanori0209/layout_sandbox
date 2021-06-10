@@ -23,7 +23,7 @@
 export default {
   data () {
     return {
-      isMinimum: false,
+      isMinimum: window.innerWidth > 640 ? false : true,
       categories: [
         {
           name: "Trend",
@@ -48,6 +48,12 @@ export default {
       ]
     }
   },
+  created() {
+    window.addEventListener("resize", this.changeSize);
+  } ,
+  destroyed() {
+    window.removeEventListener("resize", this.changeSize);
+  },
   computed: {
     menuSize () {
       return {
@@ -58,6 +64,9 @@ export default {
   methods: {
     menuWindowChange () {
       this.isMinimum = !this.isMinimum
+    },
+    changeSize () {
+      this.isMinimum = window.innerWidth > 640 ? false : true
     }
   }
 }
