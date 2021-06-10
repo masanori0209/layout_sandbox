@@ -4,9 +4,9 @@
   </div>
 </template>
 
-<style style="scss" scoped>
+<style lang="scss" scoped>
 .main-body{
   height: calc(100vh - 64px);
-  width: 100%;
+  flex: 1;
 }
 </style>
