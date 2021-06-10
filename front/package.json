@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@giphy/js-fetch-api": "^4.0.1",
+    "@giphy/react-components": "^3.0.6",
     "axios": "^0.21.1",
     "buefy": "^0.9.5",
     "core-js": "^3.6.5",
