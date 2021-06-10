@@ -61,7 +61,7 @@ export default {
     },
     trendAPI () {
       this.isLoading = true
-      this.$gf.trending({ limit: 10 }).then((d) => {
+      this.$gf.trending({ limit: 30 }).then((d) => {
         this.gifImageList = d
         this.isLoading = false
       })
@@ -89,6 +89,28 @@ export default {
     display: flex;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 50, .5);
+  border-radius: 8px;
+  box-shadow:0 0 0 1px rgba(255, 255, 255, .3);
+}
+
+.main-body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
 
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";

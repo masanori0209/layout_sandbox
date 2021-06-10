@@ -8,5 +8,6 @@
 .main-body{
   height: calc(100vh - 64px);
   flex: 1;
+  overflow: scroll;
 }
 </style>
