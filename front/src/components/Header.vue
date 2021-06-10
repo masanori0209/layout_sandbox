@@ -6,14 +6,31 @@
     </div>
     <div class="search">
       <input class="input" type="search" v-model="search" placeholder="検索"/>
-      <button class="button mdi mdi-image-search-outline"></button>
+      <button
+        class="button mdi mdi-image-search-outline"
+        @click="searchClick"
+      >
+      </button>
     </div>
     <div class="nav-info">
       <a class="mdi mdi-help-circle-outline"></a>
     </div>
   </header>
 </template>
-
+<script>
+export default {
+  data () {
+    return {
+      search: ""
+    }
+  },
+  methods: {
+    searchClick () {
+      this.$emit("searchAPI", this.search)
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 .main-header{
   height: 64px;

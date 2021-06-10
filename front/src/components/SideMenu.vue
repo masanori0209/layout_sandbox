@@ -26,7 +26,7 @@ export default {
       isMinimum: false,
       categories: [
         {
-          name: "Favorite",
+          name: "Trend",
           icon: "star-outline",
         },
         {

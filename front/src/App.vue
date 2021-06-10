@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <!-- ヘッダー部 -->
-    <Header/>
+    <Header @searchAPI="searchAPI"/>
     <!-- サイドメニュー部 -->
     <div class="main">
       <SideMenu/>
       <!-- ボディ部 -->
       <Body>
-        <router-view/>
+        <router-view :gifImageList="gifImageList"/>
       </Body>
     </div>
   </div>
@@ -24,12 +24,17 @@ export default {
   },
   data () {
     return {
-      parameter: {
-        imageFile: null, // 画像データ
-        readType: 'v1', // AI側の呼び出しタイプ（'v1': モックアップ, 'v2': AI）
-      }
+      gifImageList: []
     }
   },
+  methods: {
+    searchAPI (text) {
+      this.$gf.search(text, { sort: 'relevant', lang: 'es', limit: 30, type: 'stickers' }).then((d) => {this.gifImageList = d})
+    }
+  },
+  mounted () {
+    this.$gf.trending({ limit: 10 }).then((d) => {this.gifImageList = d})
+  }
 }
 </script>
 <style lang="scss">

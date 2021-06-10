@@ -13,7 +13,7 @@ Vue.prototype.$axios = axios.create({
   xsrfHeaderName: 'X-CSRFToken',
   'Content-Type': 'application/json'
 })
-Vue.prototype.$gf = new GiphyFetch('your api key')
+Vue.prototype.$gf = new GiphyFetch('sptbf1tstfTsUW56KcFRNTZuU02yb6k5')
 
 new Vue({
   router,
