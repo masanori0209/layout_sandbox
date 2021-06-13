@@ -8,7 +8,12 @@
       <!-- ボディ部 -->
       <Body>
         <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="false"></b-loading>
-        <router-view :gifImageList="gifImageList"/>
+        <transition>
+          <router-view
+            :gifImageList="gifImageList"
+            v-if="gifImageList != {}"
+          />
+        </transition>
       </Body>
     </div>
   </div>
@@ -25,7 +30,7 @@ export default {
   },
   data () {
     return {
-      gifImageList: [],
+      gifImageList: {},
       isLoading: true
     }
   },
@@ -37,6 +42,7 @@ export default {
   methods: {
     searchAPI (text) {
       this.isLoading = true
+      this.gifImageList = {}
       this.$gf.search(text,
         {
           sort: 'relevant',
@@ -50,6 +56,7 @@ export default {
     },
     trendAPI () {
       this.isLoading = true
+      this.gifImageList = {}
       this.$gf.trending({ limit: 30 }).then((d) => {
         this.gifImageList = d
         this.isLoading = false
