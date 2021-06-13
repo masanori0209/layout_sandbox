@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/layout_sandbox/' : '/',
   pages: {
     index: {
       entry: "src/main.js",
