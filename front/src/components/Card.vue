@@ -1,7 +1,7 @@
 <template>
   <div class="card custom">
     <div class="card-image">
-      <figure class="image is-4by3">
+      <figure class="image">
         <img class="img" :src="gif.images.original.url" alt="GIF">
       </figure>
       <p class="card-title">{{gif.title}}</p>
@@ -20,18 +20,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .custom {
-  height: 280px;
-  width: 320px;
+  height: 250px;
+  width: 300px;
   margin: 8px;
+  transition: 0.5s;
+}
+.custom:hover {
+  transform: scale(1.02);
 }
 .img {
-  width: 320px;
-  height: 240px;
+  width: 300px;
+  height: 210px;
   object-fit: cover;
 }
 .card-title {
   padding: 8px;
-  width: 320px;
+  width: 300px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -183,4 +183,22 @@ $colors: mergeColorMaps(
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+.v-enter-active {
+  transition: all .8s ease;
+}
+
+.v-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.v-enter, .v-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+img {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 </style>
