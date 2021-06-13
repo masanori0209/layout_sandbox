@@ -24,7 +24,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.home {
+.home, .list {
   height: 100%;
   width: 100%;
   display: flex;
