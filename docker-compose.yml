@@ -8,6 +8,6 @@ services:
       dockerfile: Dockerfile
     command: 'sh /app/start-front.sh'
     volumes:
-      - ./front:/app/
+      - ./front:/app
     ports:
       - 8080:8080

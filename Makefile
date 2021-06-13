@@ -1,6 +1,6 @@
 init:
 	docker-compose run front npm install
-	docker-comose up -d
+	docker-compose up -d
 up:
 	docker-compose down
 	docker-compose up -d
