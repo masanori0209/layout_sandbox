@@ -4,8 +4,8 @@ services:
 
   front:
     build:
-      context: .
-      dockerfile: ./front/Dockerfile
+      context: ./front
+      dockerfile: Dockerfile
     command: 'sh /app/start-front.sh'
     volumes:
       - ./front:/app/
