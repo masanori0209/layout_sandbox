@@ -13,4 +13,7 @@ logs:
 ps:
 	docker-compose ps
 deploy:
-	cd front; npm run deploy
+	cp -r .git ./front
+	docker-compose exec front npm run build --production
+	docker-compose exec front npm run deploy
+	rm -rf ./front/.git
