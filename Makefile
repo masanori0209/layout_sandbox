@@ -2,14 +2,15 @@ init:
 	docker-compose run front npm install
 	docker-comose up -d
 up:
-	docker-compsoe up -d
+	docker-compose down
+	docker-compose up -d
 down:
 	docker-compose down
 build:
 	docker-compose build
 logs:
-	docker-compsoe logs -f
+	docker-compose logs -f
 ps:
-	docker-compsoe ps
+	docker-compose ps
 deploy:
-	docker-compsoe exec front npm run deploy
+	docker-compose exec front npm run deploy
