@@ -14,6 +14,6 @@ ps:
 	docker-compose ps
 deploy:
 	cp -r .git ./front
-	docker-compose exec front npm run build --production
+	docker-compose exec front npm run build
 	docker-compose exec front npm run deploy
 	rm -rf ./front/.git
