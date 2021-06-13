@@ -13,4 +13,4 @@ logs:
 ps:
 	docker-compose ps
 deploy:
-	docker-compose exec front npm run deploy
+	cd front; npm run deploy
