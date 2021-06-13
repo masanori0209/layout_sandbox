@@ -11,3 +11,5 @@ logs:
 	docker-compsoe logs -f
 ps:
 	docker-compsoe ps
+deploy:
+	docker-compsoe exec front npm run deploy
