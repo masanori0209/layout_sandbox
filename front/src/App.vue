@@ -11,7 +11,6 @@
         <transition>
           <router-view
             :gifImageList="gifImageList"
-            v-if="gifImageList != {}"
           />
         </transition>
       </Body>
@@ -193,7 +192,7 @@ $colors: mergeColorMaps(
 }
 
 .v-enter, .v-leave-to {
-  transform: translateX(10px);
+  transform: translateX(30px);
   opacity: 0;
 }
 
