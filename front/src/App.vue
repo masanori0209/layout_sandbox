@@ -31,18 +31,7 @@ export default {
   },
   watch: {
     $route () {
-      this.isLoading = true
-      this.$gf.search(
-        this.$route.query.category,
-        {
-          sort: 'relevant',
-          lang: 'es',
-          limit: 30,
-          type: 'stickers'
-        }).then((d) => {
-          this.gifImageList = d
-          this.isLoading = false
-        })
+      this.searchAPI(this.$route.query.category)
     }
   },
   methods: {
