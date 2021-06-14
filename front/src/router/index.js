@@ -10,10 +10,28 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
+      title: 'Main',
+      desc: '遊び場リスト'
+    }
+  },
+  {
+    path: '/gif',
+    name: 'Home',
+    component: Home,
+    meta: {
       title: 'GIF SEARCH',
       desc: 'GIF APIを使った遊び場'
     }
-  }
+  },
+  {
+    path: '/pdf-editer',
+    name: 'Home',
+    component: Home,
+    meta: {
+      title: 'PDF EDITER',
+      desc: 'PDFを編集できるツール'
+    }
+  },
 ]
 
 const router = new VueRouter({
