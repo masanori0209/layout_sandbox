@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <!-- ヘッダー部 -->
-    <Header @searchAPI="searchAPI" @trendAPI="trendAPI"/>
+    <Header
+      @searchAPI="searchAPI"
+      @trendAPI="trendAPI"
+    />
     <!-- サイドメニュー部 -->
     <div class="main">
       <SideMenu/>
