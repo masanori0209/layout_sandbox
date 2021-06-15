@@ -1,14 +1,21 @@
 <template>
   <div id="app">
     <!-- ヘッダー部 -->
-    <Header @searchAPI="searchAPI" @trendAPI="trendAPI"/>
+    <Header
+      @searchAPI="searchAPI"
+      @trendAPI="trendAPI"
+    />
     <!-- サイドメニュー部 -->
     <div class="main">
       <SideMenu/>
       <!-- ボディ部 -->
       <Body>
         <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="false"></b-loading>
-        <router-view :gifImageList="gifImageList"/>
+        <transition>
+          <router-view
+            :gifImageList="gifImageList"
+          />
+        </transition>
       </Body>
     </div>
   </div>
@@ -25,29 +32,19 @@ export default {
   },
   data () {
     return {
-      gifImageList: [],
+      gifImageList: {},
       isLoading: true
     }
   },
   watch: {
     $route () {
-      this.isLoading = true
-      this.$gf.search(
-        this.$route.query.category,
-        {
-          sort: 'relevant',
-          lang: 'es',
-          limit: 30,
-          type: 'stickers'
-        }).then((d) => {
-          this.gifImageList = d
-          this.isLoading = false
-        })
+      this.searchAPI(this.$route.query.category)
     }
   },
   methods: {
     searchAPI (text) {
       this.isLoading = true
+      this.gifImageList = {}
       this.$gf.search(text,
         {
           sort: 'relevant',
@@ -61,6 +58,7 @@ export default {
     },
     trendAPI () {
       this.isLoading = true
+      this.gifImageList = {}
       this.$gf.trending({ limit: 30 }).then((d) => {
         this.gifImageList = d
         this.isLoading = false
@@ -187,4 +185,22 @@ $colors: mergeColorMaps(
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+.v-enter-active {
+  transition: all .8s ease;
+}
+
+.v-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.v-enter, .v-leave-to {
+  transform: translateX(30px);
+  opacity: 0;
+}
+
+img {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 </style>
