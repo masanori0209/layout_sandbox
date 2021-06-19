@@ -2,12 +2,20 @@ version: '3'
 
 services:
 
-  front:
+  vue:
     build:
-      context: ./front
+      context: ./vue
       dockerfile: Dockerfile
     command: 'sh /app/start-front.sh'
     volumes:
       - ./front:/app
     ports:
       - 8080:8080
+  react:
+    build:
+        context: react
+        dockerfile: Dockerfile
+    ports:
+      - '8081:8081'
+    volumes:
+      - .:/app:cached
