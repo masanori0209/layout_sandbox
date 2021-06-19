@@ -6,7 +6,6 @@ services:
     build:
       context: ./vue
       dockerfile: Dockerfile
-    command: 'sh /app/start-front.sh'
     volumes:
       - ./front:/app
     ports:
