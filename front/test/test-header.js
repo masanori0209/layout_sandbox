@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Body from '@/components/Body.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders a HelloWorld', () => {
+describe('Body.vue', () => {
+  it('renders a Body', () => {
     const wrapper = mount(HelloWorld)
     expect(wrapper.html()).toMatch("<div><p>HelloWorld!!</p></div>")
   })
