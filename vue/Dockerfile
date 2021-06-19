@@ -1,5 +1,4 @@
-FROM node:14.16.0
+FROM node:15.10-alpine3.13
 
 WORKDIR /app
 COPY . .
-RUN ls -la
