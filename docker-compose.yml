@@ -13,7 +13,7 @@ services:
       - 8080:8080
   react:
     build:
-        context: react
+        context: ./react
         dockerfile: Dockerfile
     ports:
       - '8081:8081'
