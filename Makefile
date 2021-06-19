@@ -1,5 +1,6 @@
 init:
-	docker-compose run front npm install
+	docker-compose run vue npm install
+	docker-compose run react npm install
 	docker-compose up -d
 up:
 	docker-compose down
@@ -12,8 +13,8 @@ logs:
 	docker-compose logs -f
 ps:
 	docker-compose ps
-deploy:
+deploy-vue:
 	cp -r .git ./front
-	docker-compose exec front npm run build
-	docker-compose exec front npm run deploy
+	docker-compose exec vue npm run build
+	docker-compose exec vue npm run deploy
 	rm -rf ./front/.git
