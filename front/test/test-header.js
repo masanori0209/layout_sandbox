@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
-import Body from '@/components/Body.vue'
+import Header from '@/components/Header.vue'
 
-describe('Body.vue', () => {
-  it('renders a Body', () => {
-    const wrapper = mount(HelloWorld)
+describe('Header.vue', () => {
+  it('renders a Header', () => {
+    const wrapper = mount(Header)
     expect(wrapper.html()).toMatch("<div><p>HelloWorld!!</p></div>")
   })
 })
