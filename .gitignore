@@ -5,7 +5,7 @@ __pycache__/
 node_modules/
 npm-debug.log*
 migrations/
-/db/db-datadir*
+/postgres/db*
 .idea
 .vscode
 *.suo
