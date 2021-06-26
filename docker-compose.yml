@@ -27,6 +27,11 @@ services:
       - 8000:8000
     volumes:
       - ./django:/server/
+    environment:
+      - POSTGRES_NAME
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - DJANGO_SECRET
     depends_on:
       - postgres
   postgres:
@@ -38,6 +43,6 @@ services:
       - ./postgres/init.d:/docker-entrypoint-initdb.d
       - ./postgres/db:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_INITDB_ARGS
