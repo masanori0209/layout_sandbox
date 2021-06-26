@@ -7,7 +7,7 @@ services:
       context: ./vue
       dockerfile: Dockerfile
     volumes:
-      - ./front:/app
+      - ./vue:/app
     ports:
       - 8080:8080
   react:
@@ -17,7 +17,7 @@ services:
     ports:
       - 8081:8081
     volumes:
-      - .:/app:cached
+      - ./react:/app:cached
   django:
     build:
       context: ./django
@@ -26,7 +26,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./back:/server/
+      - ./django:/server/
     depends_on:
       - postgres
   postgres:
@@ -35,8 +35,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./postgres/init:/docker-entrypoint-initdb.d
-      - database:/var/lib/postgresql/data
+      - ./postgres/init.d:/docker-entrypoint-initdb.d
+      - ./postgres/db:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres

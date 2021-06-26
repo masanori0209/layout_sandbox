@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get -y update && \
     apt-get install -y --no-install-recommends \
     build-essential \
-    openssl libssl-dev postgresql-11 \
+    openssl libssl-dev postgresql-11 libpq-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
