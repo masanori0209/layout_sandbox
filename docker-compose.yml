@@ -28,7 +28,7 @@ services:
     volumes:
       - ./back:/server/
     depends_on:
-      - db
+      - postgres
   postgres:
     image: postgres:10.5
     container_name: postgres
