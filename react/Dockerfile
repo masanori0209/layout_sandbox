@@ -4,4 +4,4 @@ ENV APP=/app
 RUN mkdir -p ${APP}
 
 WORKDIR ${APP}
-CMD [yarn, start]
+CMD ["npm", "run", "start"]

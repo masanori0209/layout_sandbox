@@ -46,3 +46,4 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_INITDB_ARGS
+      - PGDATA
